@@ -11,7 +11,6 @@ const Column = ({ column, tasks }) => {
                     <div
                         ref={provided.innerRef}
                         {...provided.droppableProps}
-                        isDraggingOver={snapshot.isDraggingOver}
                         className={`task-container ${snapshot.isDraggingOver ? "draggingOver" : ""}`}
                     >
                         {tasks.map((task, index) => (

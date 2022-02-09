@@ -9,7 +9,6 @@ const Carte = ({ task, index }) => {
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
-                    isDragging={snapshot.isDragging}
                     className={`Carte ${snapshot.isDragging ? "dragging" : ""}`}
                 >
                     <img src={task.image} alt="" />
