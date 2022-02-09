@@ -1,4 +1,4 @@
-import Task from "../Task/Task";
+import Carte from "../Carte/Carte";
 import { Droppable } from "react-beautiful-dnd";
 import "./Column.css";
 
@@ -6,13 +6,18 @@ const Column = ({ column, tasks }) => {
     return (
         <div className="Column">
             <h2>{column.title}</h2>
-            <Droppable droppableId={column.id}>
-                {(provider) => (
-                    <div {...provider.droppableProps} ref={provider.innerRef} className="task-container">
+            <Droppable droppableId={column.id} direction="horizontal">
+                {(provided, snapshot) => (
+                    <div
+                        ref={provided.innerRef}
+                        {...provided.droppableProps}
+                        isDraggingOver={snapshot.isDraggingOver}
+                        className={`task-container ${snapshot.isDraggingOver ? "draggingOver" : ""}`}
+                    >
                         {tasks.map((task, index) => (
-                            <Task key={task.id} task={task} index={index} />
+                            <Carte key={task.id} task={task} index={index} />
                         ))}
-                        {provider.placeholder}
+                        {provided.placeholder}
                     </div>
                 )}
             </Droppable>
